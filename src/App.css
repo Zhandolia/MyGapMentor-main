@@ -486,14 +486,13 @@ h3 {
 }
 
 .category-box {
+  max-width: 600px;
   border: 1px solid #F5F5DC;
   padding: 20px;
   margin-bottom: 20px;
   background-color: #f5f5f5;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  width: 550px;
-  max-width: 550px;
 }
 
 .category-box label {
@@ -523,12 +522,13 @@ h3 {
 }
 
 /* ******** */
+
 .category-container {
   margin-bottom: 20px;
 }
 
 .category-box {
-  width: 550px;
+  width: 550px; /* Fixed width for the container */
   margin: 0 auto;
   text-align: center;
   padding: 20px;
@@ -540,11 +540,23 @@ h3 {
   align-items: center;
 }
 
+.category-box textarea {
+  text-align: left;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  border: 1px solid #F5F5DC;
+  border-radius: 5px;
+  font-size: 16px;
+  resize: vertical;
+  min-height: 60px;
+}
+
 .category-box h3 {
   margin-bottom: 10px;
 }
 
-.category-box input[type="text"] {
+/* .category-box input[type="text"] {
   width: 80%;
   max-width: 80%;
   padding: 10px;
@@ -555,7 +567,19 @@ h3 {
   resize: vertical;
   min-height: 20px;
   display: center;
+} */
+
+.category-box input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #F5F5DC;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  min-height: 80px; /* Change this value to your desired height */
+  display: center;
 }
+
 
 .category-box button {
   margin-top: 10px;

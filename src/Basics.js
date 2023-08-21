@@ -166,12 +166,12 @@ function Basics() {
               onChange={(e) => setSelectedMajor(e.target.value)}
             >
             <option value="">Select a major</option>
-            <option value="Biology">Biology</option>
+            {/* <option value="Biology">Biology</option>
             <option value="Business Administration">Business Administration</option>
             <option value="Chemistry">Chemistry</option>
-            <option value="Communications">Communications</option>
+            <option value="Communications">Communications</option> */}
             <option value="Computer Science">Computer Science</option>
-            <option value="Economics">Economics</option>
+            {/* <option value="Economics">Economics</option>
             <option value="Education">Education</option>
             <option value="Engineering">Engineering</option>
             <option value="English">English</option>
@@ -185,7 +185,7 @@ function Basics() {
             <option value="Physics">Physics</option>
             <option value="Political Science">Political Science</option>
             <option value="Psychology">Psychology</option>
-            <option value="Sociology">Sociology</option>
+            <option value="Sociology">Sociology</option> */}
             </select>
         </div>
         </div>
@@ -198,8 +198,7 @@ function Basics() {
                 {categoryData.volunteering.events.map((event, index) => (
                 <div key={index}>
                     <label id='basics-labels'>How did you contribute?</label>
-                    <input
-                    type="text"
+                    <textarea
                     placeholder="Describe in 2-3 sentences"
                     value={event.description || ''}
                     onChange={(e) =>
@@ -232,7 +231,7 @@ function Basics() {
                 {categoryData.internships.events.map((event, index) => (
                 <div key={index}>
                     <label id='basics-labels'>What did you do?</label>
-                    <input
+                    <textarea
                     type="text"
                     placeholder="Describe in 2-3 sentences"
                     value={event.description || ''}
@@ -266,7 +265,7 @@ function Basics() {
                 {categoryData.pet_projects.events.map((event, index) => (
                 <div key={index}>
                     <label id='basics-labels'>What did you do?</label>
-                    <input
+                    <textarea
                     type="text"
                     placeholder="Describe in 2-3 sentences"
                     value={event.description || ''}
@@ -300,7 +299,7 @@ function Basics() {
                 {categoryData.research_projects.events.map((event, index) => (
                 <div key={index}>
                     <label id='basics-labels'>What did you do?</label>
-                    <input
+                    <textarea
                     type="text"
                     placeholder="Describe in 2-3 sentences"
                     value={event.description || ''}
@@ -334,7 +333,7 @@ function Basics() {
                 {categoryData.internships.events.map((event, index) => (
                 <div key={index}>
                     <label id='basics-labels'>What did you do?</label>
-                    <input
+                    <textarea
                     type="text"
                     placeholder="Describe in 2-3 sentences"
                     value={event.description || ''}
@@ -368,7 +367,7 @@ function Basics() {
                 {categoryData.hackathons.events.map((event, index) => (
                 <div key={index}>
                     <label id='basics-labels'>What did you do?</label>
-                    <input
+                    <textarea
                     type="text"
                     placeholder="Describe in 2-3 sentences"
                     value={event.description || ''}
@@ -402,7 +401,7 @@ function Basics() {
                 {categoryData.additional_information.events.map((event, index) => (
                 <div key={index}>
                     <label id='basics-labels'>What did you do?</label>
-                    <input
+                    <textarea
                     type="text"
                     placeholder="Describe in 2-3 sentences"
                     value={event.description || ''}
