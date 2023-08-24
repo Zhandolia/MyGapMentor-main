@@ -30,26 +30,46 @@ function Basics() {
         };
     };
 
+    const createPrompt = (userInputs) => {
+        // Convert userInputs into a string format suitable for your OpenAI prompt
+        // This will depend on exactly what kind of question or statement you want to send to the OpenAI API
+        // Example:
+        return `Please generate a plan for a student with the following activities: ${JSON.stringify(userInputs)}`;
+      };
+
    const handleClick = async () => {
 
     const userInputs = gatherUserInputs();
+    let plan = '';
+
     try {
-        const response = await axios.post('/api/generate-activities', userInputs);
-        const plan = response.data.activities;
-        // Navigate to the new page with the plan data
-        navigate('/plan', { state: { plan } });
+        const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+        };
+
+        const prompt = createPrompt(userInputs); // Define a function to create OpenAI prompt
+
+        const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
+        prompt: prompt,
+        max_tokens: 150
+        }, { headers: headers });
+
+        // const plan = response.data.choices[0].text;
+        // navigate('/Computer-Science', { state: { plan } });
+        plan = response.data.choices[0].text; // Assign a value to 'plan' here
     } catch (error) {
         console.error('Error generating plan:', error);
     }
 
-    switch (selectedMajor) {
-        case 'Computer Science':
-            navigate('/Computer-Science');
-            break;
-        default:
-            break;
-      }
-  }
+        switch (selectedMajor) {
+            case 'Computer Science':
+                navigate('/Computer-Science', { state: { plan } });
+                break;
+            default:
+                break;
+        }
+    }
 
   function addCategory(category) {
     setCategoryData((prevData) => ({
@@ -76,6 +96,25 @@ function Basics() {
       },
     }));
   }
+
+    // function handleInputChange(category, eventIndex, field, value) {
+    //     if (categoryData[category]) { // Checking if the category exists
+    //     setCategoryData((prevData) => ({
+    //         ...prevData,
+    //         [category]: {
+    //         ...prevData[category],
+    //         events: prevData[category].events.map((event, index) => {
+    //             if (index === eventIndex) {
+    //             return { ...event, [field]: value };
+    //             }
+    //             return event;
+    //         }),
+    //         },
+    //     }));
+    //     } else {
+    //     console.warn(`Category ${category} not found.`);
+    //     }
+    // }
 
   function handleAddEvent(category) {
     setCategoryData((prevData) => ({
@@ -155,8 +194,8 @@ function Basics() {
         />
 
         <CategoryBox 
-            category="Pet Projects" 
-            data={categoryData.pet_projects} 
+            category="Pet-Projects"
+            data={categoryData.petprojects} 
             handleInputChange={handleInputChange}
             handleAddEvent={handleAddEvent}
             handleRemoveEvent={handleRemoveEvent}
@@ -164,7 +203,7 @@ function Basics() {
         />
 
         <CategoryBox 
-            category="Research Projects" 
+            category="ResearchProjects" 
             data={categoryData.research_projects} 
             handleInputChange={handleInputChange}
             handleAddEvent={handleAddEvent}
