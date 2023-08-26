@@ -28,3 +28,5 @@ app.post('/api/generate-text', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+// is not included elsewhere
